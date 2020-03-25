@@ -18,25 +18,25 @@ window.addEventListener("load", function() {
    });
 });
 window.addEventListener("load", function(){
-   let form = document.getElementById("launchForm");
+   let form = document.querySelector("form");
    form.addEventListener("submit", function(event){
        event.preventDefault();
-       let pilotNameInput = document.getElementById("input[pilotName]");
-       let copilotNameInput = document.getElementById("input[copilotName]");
-       let fuelLevelInput = document.getElementById("input[fuelLevel]");
-       let cargoMassInput = document.getElementById("input[cargoMass]");
+       let pilotNameInput = document.querySelector("input[name=pilotName]");
+       let copilotNameInput = document.querySelector("input[name=copilotName]");
+       let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
+       let cargoMassInput = document.querySelector("input[name=cargoMass]");
                                    
           if(pilotNameInput.value === "" || !isNaN(pilotNameInput.value) ||
           copilotNameInput.value === "" || !isNaN(copilotNameInput.value) ||
           fuelLevelInput.value === "" || isNaN(fuelLevelInput.value) || fuelLevelInput.value < 0 ||
-          cargoMassInput.value === "" || isNaN(cargoMassInput.value)||cargoMassInput.value < 0){
+          cargoMassInput.value === "" || isNaN(cargoMassInput.value) || cargoMassInput.value < 0){
                alert("Please recheck your input and try again.");
               
            } else if(fuelLevelInput.value < 10000 || cargoMassInput.value > 10000){
                faultyItems.style.visibility = "visible";
                launchStatus.style.color = 'red';                                    
                let launchStatusUpdate = document.getElementById("launchStatus");
-               launchStatusUpdate.innerHTML = "Shuttle not ready for launch";
+               launchStatusUpdate.innerHTML ="Shuttle not ready for launch";
                let pilotStatusUpdate = document.getElementById("pilotStatus");
                pilotStatusUpdate.innerHTML = `Pilot ${pilotNameInput.value} is ready for launch`;
                let copilotStatusUpdate = document.getElementById("copilotStatus");
@@ -47,7 +47,7 @@ window.addEventListener("load", function(){
                }
                if (cargoMassInput.value > 10000){
                    let cargoStatusUpdate = document.getElementById("cargoStatus");
-                   cargoStatusUpdate.innerHTML = "Cargo Mass is too large for launch";
+                   cargoStatusUpdate.innerHTML ="Cargo Mass is too large for launch";
                }
            } else {
                faultyItems.style.visibility = "visible";
@@ -57,7 +57,7 @@ window.addEventListener("load", function(){
                let copilotStatusUpdate = document.getElementById("copilotStatus");
                copilotStatusUpdate.innerHTML = `Pilot ${copilotNameInput.value} is ready for launch`;
                let launchStatusUpdate = document.getElementById("launchStatus");
-               launchStatusUpdate.innerHTML = "Shuttle is ready for launch";
+               launchStatusUpdate.innerHTML ="Shuttle is ready for launch";
            } 
    })
 })
